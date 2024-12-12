@@ -1,0 +1,119 @@
+shortname: Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing
+type: Paleobook
+thumbnail: logo
+parts:
+  - caption: Exploring the Data
+    chapters:
+      - shortname: Load_Data
+        filename: Load_Data
+        thumbnail: logo
+        tags:
+        domains:
+          - data wrangling
+        packages:
+          - pylipd
+          - pyleoclim
+      - shortname: Mapping_Data
+        filename: Mapping_Data
+        thumbnail: lsd_map
+        tags:
+        domains:
+          - geospatial
+          - data viz
+        packages:
+          - cartopy
+          - pyleoclim
+          - matplotlib
+      - shortname: Plotting_Raw_Data
+        filename: Plotting_Raw_Data
+        thumbnail: lsd_stack
+        tags:
+        domains:
+          - data viz
+        packages:
+          - matplotlib
+          - pyleoclim
+  - caption: Heuristic Examples
+    chapters:
+      - shortname: Toy_Data_Heuristic
+        filename: Toy_Data_Heuristic
+        thumbnail: murmuration_helper_new
+        tags:
+        domains:
+          - data viz
+          - data analysis
+        packages:
+          - pyleoclim
+          - matplotlib
+          - climlab
+      - shortname: Leviathan_Cave_and_Insolation
+        filename: Leviathan_Cave_and_Insolation
+        thumbnail: leviathan_lag
+        tags:
+        domains:
+          - paleoclimate
+          - data analysis
+          - data viz
+        packages:
+          - matplotlib
+          - climlab
+          - pyleoclim
+  - caption: Global Coherence Analysis
+    chapters:
+      - shortname: Global_Coherence_Analysis
+        filename: Global_Coherence_Analysis
+        thumbnail: coherence
+        tags:
+        domains:
+          - data viz
+          - data analysis
+          - paleoclimate
+        packages:
+          - matplotlib
+          - pyleoclim
+          - climlab
+      - shortname: Global_Coherence_MIS
+        filename: Global_Coherence_MIS
+        thumbnail: MIS_asymmetry_fig
+        tags:
+        domains:
+          - paleoclimate
+          - signal processing
+        packages:
+          - pyleoclim
+          - climlab
+          - matplotlib
+      - shortname: Global_Coherence_Sensitivity
+        filename: Global_Coherence_Sensitivity_and_Significance
+        thumbnail: coh_surrogate_violin
+        tags:
+        domains:
+          - statistics
+          - data analysis
+        packages:
+          - numpy
+          - matplotlib
+  - caption: Correlation Analysis
+    chapters:
+      - shortname: Interglacial_Correlation
+        filename: Interglacial_Correlation_Analysis
+        thumbnail: geo_ms_interglacial_correlation
+        tags:
+        domains:
+          - statistics
+          - paleoclimate
+        packages:
+          - pyleoclim
+          - climlab
+          - matplotlib
+      - shortname: Glaciation_Correlation
+        filename: Glaciation_Correlation_Analysis
+        thumbnail: geo_ms_glacial_correlation
+        tags:
+        domains:
+          - statistics
+          - paleoclimate
+        packages:
+          - climlab
+          - pyleoclim
+          - matplotlib

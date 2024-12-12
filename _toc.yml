@@ -1,0 +1,21 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Exploring the Data
+    chapters:
+      - file: notebooks/Explore_Data/Load_Data
+      - file: notebooks/Explore_Data/Mapping_Data
+      - file: notebooks/Explore_Data/Plotting_Raw_Data
+  - caption: Heuristic Examples
+    chapters:
+      - file: notebooks/Heuristics/Toy_Data_Heuristic
+      - file: notebooks/Heuristics/Leviathan_Cave_and_Insolation
+  - caption: Global Coherence Analysis
+    chapters:
+      - file: notebooks/Coherence/Global_Coherence_Analysis
+      - file: notebooks/Coherence/Global_Coherence_MIS
+      - file: notebooks/Coherence/Global_Coherence_Sensitivity_and_Significance
+  - caption: Correlation Analysis
+    chapters:
+      - file: notebooks/Correlation/Interglacial_Correlation_Analysis
+      - file: notebooks/Correlation/Glacial_Correlation_Analysis
