@@ -443,10 +443,10 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                            | 0/15 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|█████▌                                                                              | 1/15 [00:01&lt;00:14,  1.07s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|█████▌                                                                              | 1/15 [00:00&lt;00:13,  1.06it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 15/15 [00:01&lt;00:00, 13.08it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 15/15 [00:01&lt;00:00, 14.44it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -499,6 +499,8 @@ document.write(`
     <span class="n">_</span><span class="p">,</span> <span class="n">doi_df</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get_timeseries</span><span class="p">(</span><span class="n">dsnames</span><span class="o">=</span><span class="n">record</span><span class="p">,</span> <span class="n">to_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">doi_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">doi_df</span><span class="p">[</span><span class="s2">&quot;pub1_doi&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">lat_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat</span>
+
+<span class="n">geo_ms</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">MultipleGeoSeries</span><span class="p">(</span><span class="n">series_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -509,7 +511,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 73.24it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 76.77it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -517,79 +519,262 @@ document.write(`
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
 Time axis values sorted in ascending order
+Extracting timeseries from dataset: DevilsHole.Nevada.2017 ...
+Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">37</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">geo_series</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">33</span>     <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;speleothem&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">series_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geo_series</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="n">_</span><span class="p">,</span> <span class="n">doi_df</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get_timeseries</span><span class="p">(</span><span class="n">dsnames</span><span class="o">=</span><span class="n">record</span><span class="p">,</span> <span class="n">to_dataframe</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">doi_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">doi_df</span><span class="p">[</span><span class="s2">&quot;pub1_doi&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="n">lat_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/lipd.py:436,</span> in <span class="ni">LiPD.get_timeseries</span><span class="nt">(self, dsnames, to_dataframe, mode, time)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">dsnames</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="n">dsnames</span><span class="o">=</span><span class="p">[</span><span class="n">dsnames</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">436</span> <span class="n">ts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_timeseries</span><span class="p">(</span><span class="n">dsnames</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span> <span class="k">if</span> <span class="n">to_dataframe</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="k">return</span> <span class="n">ts</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/lipd.py:454,</span> in <span class="ni">LiPD._get_timeseries</span><span class="nt">(self, dsnames, mode, time)</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="k">for</span> <span class="n">dsname</span> <span class="ow">in</span> <span class="n">dsnames</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="n">converter</span> <span class="o">=</span> <span class="n">RDFToLiPD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">454</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">convert_to_json</span><span class="p">(</span><span class="n">dsname</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting timeseries from dataset: &quot;</span> <span class="o">+</span> <span class="n">dsname</span> <span class="o">+</span> <span class="s2">&quot; ...&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:82,</span> in <span class="ni">RDFToLiPD.convert_to_json</span><span class="nt">(self, dsname)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_indexed_facts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">+</span> <span class="n">dsname</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="n">lipd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_to_lipd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">namespace</span> <span class="o">+</span> <span class="n">dsname</span><span class="p">,</span> <span class="s2">&quot;Dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;Dataset&quot;</span><span class="p">,</span> <span class="n">pagesdone</span><span class="o">=</span><span class="p">{})</span>
-<span class="ne">---&gt; </span><span class="mi">82</span> <span class="n">lipd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">lipd</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="k">return</span> <span class="n">lipd</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:379,</span> in <span class="ni">RDFToLiPD._post_processing</span><span class="nt">(self, obj, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>         <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>     <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:379,</span> in <span class="ni">RDFToLiPD._post_processing</span><span class="nt">(self, obj, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>         <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>     <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
-
-    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">similar</span> <span class="n">frames</span><span class="p">:</span> <span class="n">RDFToLiPD</span><span class="o">.</span><span class="n">_post_processing</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">379</span> <span class="p">(</span><span class="mi">1</span> <span class="n">times</span><span class="p">)]</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:379,</span> in <span class="ni">RDFToLiPD._post_processing</span><span class="nt">(self, obj, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>         <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>     <span class="n">obj</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_processing</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:374,</span> in <span class="ni">RDFToLiPD._post_processing</span><span class="nt">(self, obj, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span>     <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">tschema</span><span class="p">[</span><span class="s2">&quot;@toJson_pre&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span>         <span class="n">fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">374</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>        
-<span class="g g-Whitespace">    </span><span class="mi">376</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-
-<span class="nn">File ~/miniconda3/envs/insolation2/lib/python3.12/site-packages/pylipd/utils/rdf_to_lipd.py:576,</span> in <span class="ni">RDFToLiPD._set_interpretation_variable_label</span><span class="nt">(self, interp, parent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>             <span class="n">interp</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RSYNONYMS</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">576</span>             <span class="n">interp</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span><span class="p">[</span><span class="s2">&quot;hasVariable&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="k">del</span> <span class="n">interp</span><span class="p">[</span><span class="s2">&quot;hasVariable&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="k">return</span> <span class="n">interp</span>
-
-<span class="ne">KeyError</span>: &#39;label&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 156.39it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: Botuvera.Brazil.2005 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 121.73it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+Time axis values sorted in ascending order
+Extracting timeseries from dataset: Leviathan.Nevada.2017 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 126.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaNs have been detected and dropped.
+Time axis values sorted in ascending order
+Extracting timeseries from dataset: DonggeD4.China.2004 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 161.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaNs have been detected and dropped.
+Time axis values sorted in ascending order
+Extracting timeseries from dataset: DonggeD3.China.2004 ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 161.05it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+Time axis values sorted in ascending order
+Extracting timeseries from dataset: Kesang.China.2012 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 203.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting timeseries from dataset: Linzhu.China.2009 ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 121.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: Peqiin.Israel.2003 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 136.19it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: BuckeyeCreek.WestVirginia.2019 ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 152.28it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: JerusalemWest.Jerusalem.1999 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 93.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: Sanbao.China.2016 ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 121.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting timeseries from dataset: Soreq.Israel.2003 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 116.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaNs have been detected and dropped.
+Time axis values sorted in ascending order
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting timeseries from dataset: CuevadelDiamante.Peru.2013 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 12.25it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time axis values sorted in ascending order
+Extracting timeseries from dataset: Clearwater.Borneo.2016 ...
+Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 71.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+Time axis values sorted in ascending order
+Extracting timeseries from dataset: Bittoo.India.2016 ...
 </pre></div>
 </div>
 </div>
@@ -602,7 +787,7 @@ Time axis values sorted in ascending order
 <span class="n">series_dicts</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">geo_ms_composite_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">series_list</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">geo_ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">:</span>
     <span class="k">if</span> <span class="s2">&quot;dongge&quot;</span> <span class="ow">in</span> <span class="n">series</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="n">time</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">time</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">value</span>
@@ -660,6 +845,45 @@ Time axis values sorted in ascending order
 </div>
 </div>
 </div>
+<p>Remove the Dongge and Linzhu sections from the Sanbao composite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the time ranges to exclude</span>
+<span class="n">dongge_time_ranges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Dongge.China.2004&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">()</span><span class="o">.</span><span class="n">series_list</span>
+<span class="p">]</span>
+<span class="n">linzhu_time_range</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="p">),</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Create the initial mask (all True)</span>
+<span class="n">sanbao</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Important: create a copy!</span>
+<span class="n">time_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">sanbao</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span>
+<span class="p">)</span>  <span class="c1"># Alternative to np.array([True] * len(sanbao.time))</span>
+
+<span class="c1"># Remove Dongge ranges</span>
+<span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">dongge_time_ranges</span><span class="p">:</span>
+    <span class="n">time_mask</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">((</span><span class="n">sanbao</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sanbao</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">))</span>
+
+<span class="c1"># Remove Linzhu range</span>
+<span class="n">time_mask</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">sanbao</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">linzhu_time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sanbao</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;=</span> <span class="n">linzhu_time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1"># Apply the mask to filter your data</span>
+<span class="n">sanbao</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">sanbao</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">time_mask</span><span class="p">]</span>
+<span class="n">sanbao</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">sanbao</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">time_mask</span><span class="p">]</span>
+<span class="n">sanbao</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;SanbaoHulu.China.2016&quot;</span>
+
+<span class="k">del</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span>
+<span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sanbao</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Next, we create versions of each GeoSeries that are useful for plotting. These objects won’t be used to do any analysis, the raw records will do that, but the plotting objects are structured so that we don’t plot lines over hiatuses. We’ll create an unsmoothed and a smoothed version of each:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -679,7 +903,7 @@ Time axis values sorted in ascending order
         <span class="n">smooth_plotting_series_value</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">smooth_plotting_series_time</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="o">.</span><span class="n">series_list</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
                 <span class="n">plotting_series_value</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
                 <span class="n">plotting_series_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
                 <span class="n">plotting_series_time</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
@@ -711,7 +935,16 @@ Time axis values sorted in ascending order
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 14/14 [00:00&lt;00:00, 114.30it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                            | 0/14 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|██████████████████████████████████████████████████████████████████████▎           | 12/14 [00:00&lt;00:00, 112.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████| 14/14 [00:00&lt;00:00, 105.73it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

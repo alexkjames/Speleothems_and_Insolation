@@ -1,0 +1,131 @@
+Traceback (most recent call last):
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Loading the U1446 marine sediment data
+
+lipd_path = "./data/speleothems/Sanbao.China.2016.lpd"
+
+L = LiPD()
+
+if __name__ == "__main__":
+    L.load(lipd_path)
+
+# Loading the sanbao d18O data
+df = L.get_timeseries_essentials()
+row = df[df["paleoData_variableName"] == "d18O"].iloc[0]  # Get the first row with d18O
+
+time = row["time_values"]
+time_name = row["time_variableName"]
+time_unit = row["time_units"]
+value = row["paleoData_values"]
+value_name = row["paleoData_variableName"]
+value_unit = row["paleoData_units"]
+lat = row["geo_meanLat"]
+lon = row["geo_meanLon"]
+
+sanbao = (
+    pyleo.GeoSeries(
+        time=time,
+        value=value,
+        time_name=time_name,
+        time_unit=time_unit,
+        value_name=value_name,
+        value_unit=value_unit,
+        lat=lat,
+        lon=lon,
+        label="Sanbao",
+        archiveType="Speleothem",
+        verbose=False,
+    )
+    .interp()
+    .convert_time_unit("kyrs BP")
+)
+------------------
+
+----- stdout -----
+Loading 1 LiPD files
+----- stderr -----
+  0%|                                                                                             | 0/1 [00:00<?, ?it/s]
+----- stderr -----
+  0%|                                                                                             | 0/1 [00:00<?, ?it/s]
+----- stdout -----
+ERROR: Could not convert LiPD file ./data/speleothems/Sanbao.China.2016.lpd to RDF
+----- stderr -----
+
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 8[39m
+[32m      5[39m L = LiPD()
+[32m      7[39m [38;5;28;01mif[39;00m [34m__name__[39m == [33m"[39m[33m__main__[39m[33m"[39m:
+[32m----> [39m[32m8[39m     [43mL[49m[43m.[49m[43mload[49m[43m([49m[43mlipd_path[49m[43m)[49m
+[32m     10[39m [38;5;66;03m# Loading the sanbao d18O data[39;00m
+[32m     11[39m df = L.get_timeseries_essentials()
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/lipd.py:141[39m, in [36mLiPD.load[39m[34m(self, lipdfiles, parallel)[39m
+[32m    139[39m numfiles = [38;5;28mlen[39m(lipdfiles)
+[32m    140[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33mLoading [39m[38;5;132;01m{[39;00mnumfiles[38;5;132;01m}[39;00m[33m LiPD files[39m[33m"[39m)
+[32m--> [39m[32m141[39m [38;5;28mself[39m.graph = [43mmulti_load_lipd[49m[43m([49m[38;5;28;43mself[39;49m[43m.[49m[43mgraph[49m[43m,[49m[43m [49m[43mlipdfiles[49m[43m,[49m[43m [49m[43mparallel[49m[43m)[49m
+[32m    142[39m [38;5;28mprint[39m([33m"[39m[33mLoaded..[39m[33m"[39m)
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/utils/multi_processing.py:56[39m, in [36mmulti_load_lipd[39m[34m(graph, lipdfiles, parallel)[39m
+[32m     54[39m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m tqdm([38;5;28mrange[39m([32m0[39m, [38;5;28mlen[39m(lipdfiles))):
+[32m     55[39m     lipdfile = lipdfiles[i]
+[32m---> [39m[32m56[39m     subgraph = [43mconvert_lipd_to_graph[49m[43m([49m[43mlipdfile[49m[43m)[49m
+[32m     57[39m     graph.addN(subgraph.quads())
+[32m     58[39m     [38;5;28;01mdel[39;00m subgraph
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/utils/multi_processing.py:40[39m, in [36mconvert_lipd_to_graph[39m[34m(lipdfile)[39m
+[32m     38[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+[32m     39[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33mERROR: Could not convert LiPD file [39m[38;5;132;01m{[39;00mlipdfile[38;5;132;01m}[39;00m[33m to RDF[39m[33m"[39m)            
+[32m---> [39m[32m40[39m     [38;5;28;01mraise[39;00m e
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/utils/multi_processing.py:36[39m, in [36mconvert_lipd_to_graph[39m[34m(lipdfile)[39m
+[32m     34[39m [38;5;28;01mtry[39;00m:
+[32m     35[39m     converter = LipdToRDF()
+[32m---> [39m[32m36[39m     [43mconverter[49m[43m.[49m[43mconvert[49m[43m([49m[43mlipdfile[49m[43m)[49m
+[32m     37[39m     [38;5;28;01mreturn[39;00m converter.graph
+[32m     38[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/utils/lipd_to_rdf.py:61[39m, in [36mLipdToRDF.convert[39m[34m(self, lipdpath)[39m
+[32m     58[39m [38;5;28mself[39m.graphurl = NSURL + [33m"[39m[33m/[39m[33m"[39m + lpdname
+[32m     60[39m [38;5;28;01mwith[39;00m tempfile.TemporaryDirectory(prefix=[33m"[39m[33mlipd_to_rdf_[39m[33m"[39m) [38;5;28;01mas[39;00m tmpdir:
+[32m---> [39m[32m61[39m     [38;5;28;43mself[39;49m[43m.[49m[43m_unzip_lipd_file[49m[43m([49m[43mlipdpath[49m[43m,[49m[43m [49m[43mtmpdir[49m[43m)[49m
+[32m     62[39m     jsons = [38;5;28mself[39m._find_files_with_extension(tmpdir, [33m'[39m[33mjsonld[39m[33m'[39m)
+[32m     63[39m     [38;5;28;01mfor[39;00m jsonpath, _ [38;5;129;01min[39;00m jsons:
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/site-packages/pylipd/utils/lipd_to_rdf.py:108[39m, in [36mLipdToRDF._unzip_lipd_file[39m[34m(self, lipdfile, unzipdir)[39m
+[32m    104[39m         zip_ref.extractall(unzipdir)
+[32m    105[39m [38;5;28;01melse[39;00m:
+[32m    106[39m     [38;5;66;03m# If this is a local file[39;00m
+[32m    107[39m     [38;5;66;03m# Unzip file[39;00m
+[32m--> [39m[32m108[39m     [38;5;28;01mwith[39;00m [43mzipfile[49m[43m.[49m[43mZipFile[49m[43m([49m[43mlipdfile[49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mr[39;49m[33;43m'[39;49m[43m)[49m [38;5;28;01mas[39;00m zip_ref:
+[32m    109[39m         zip_ref.extractall(unzipdir)
+
+[36mFile [39m[32m~/miniconda3/envs/inso_env/lib/python3.12/zipfile/__init__.py:1336[39m, in [36mZipFile.__init__[39m[34m(self, file, mode, compression, allowZip64, compresslevel, strict_timestamps, metadata_encoding)[39m
+[32m   1334[39m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[32m   1335[39m     [38;5;28;01mtry[39;00m:
+[32m-> [39m[32m1336[39m         [38;5;28mself[39m.fp = [43mio[49m[43m.[49m[43mopen[49m[43m([49m[43mfile[49m[43m,[49m[43m [49m[43mfilemode[49m[43m)[49m
+[32m   1337[39m     [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m:
+[32m   1338[39m         [38;5;28;01mif[39;00m filemode [38;5;129;01min[39;00m modeDict:
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: './data/speleothems/Sanbao.China.2016.lpd'
+

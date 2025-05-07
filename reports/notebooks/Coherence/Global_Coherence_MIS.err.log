@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Creating interglacial series objects
+
+series = geo_ms_composite_dict["Sanbao.China.2016"].convert_time_unit(
+    "kyrs BP"
+)  # .interp()
+value = []
+time = []
+for interval in interglacial_timing:
+    series_interval = series.slice(interval)
+    if len(series_interval.time) > 1:
+        value.extend(series_interval.value)
+        time.extend(series_interval.time)
+interglacial_series = series.copy()
+interglacial_series.time = time
+interglacial_series.value = value
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 3[39m
+[32m      1[39m [38;5;66;03m# Creating interglacial series objects[39;00m
+[32m----> [39m[32m3[39m series = [43mgeo_ms_composite_dict[49m[43m[[49m[33;43m"[39;49m[33;43mSanbao.China.2016[39;49m[33;43m"[39;49m[43m][49m.convert_time_unit(
+[32m      4[39m     [33m"[39m[33mkyrs BP[39m[33m"[39m
+[32m      5[39m )  [38;5;66;03m# .interp()[39;00m
+[32m      6[39m value = []
+[32m      7[39m time = []
+
+[31mKeyError[39m: 'Sanbao.China.2016'
+

@@ -1,0 +1,136 @@
+Traceback (most recent call last):
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/alexjames/miniconda3/envs/inso_env/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Plotting
+
+title_cmap = {
+    "Kesang.China.2012": "Blue",
+    "Linzhu.China.2009": "Blue",
+    "Bittoo.India.2016": "Blue",
+    "Dongge.China.2004": "Blue",
+    "Sanbao.China.2016": "Blue",
+    "CuevadelDiamante.Peru.2013": "Green",
+    "Botuvera.Brazil.2005": "Green",
+    "Leviathan.Nevada.2017": "Purple",
+    "DevilsHole.Nevada.2017": "Purple",
+    "BuckeyeCreek.WestVirginia.2019": "Purple",
+    "Peqiin.Israel.2003": "Red",
+    "JerusalemWest.Jerusalem.1999": "Red",
+    "Soreq.Israel.2003": "Red",
+    "Clearwater.Borneo.2016": "Brown",
+}
+
+fig, ax = plt.subplots(nrows=4, ncols=4, figsize=(16, 20))
+# fig.subplots_adjust(wspace=0.6, hspace=0.4)
+fig.tight_layout()
+
+axes = ax.ravel()
+colors = sns.color_palette("colorblind")
+
+plot_order = [
+    "Kesang.China.2012",
+    "Linzhu.China.2009",
+    "Bittoo.India.2016",
+    "Dongge.China.2004",
+    "Sanbao.China.2016",
+    "CuevadelDiamante.Peru.2013",
+    "Botuvera.Brazil.2005",
+    "Leviathan.Nevada.2017",
+    "DevilsHole.Nevada.2017",
+    "BuckeyeCreek.WestVirginia.2019",
+    "Peqiin.Israel.2003",
+    "JerusalemWest.Jerusalem.1999",
+    "Soreq.Israel.2003",
+    "Clearwater.Borneo.2016",
+]
+
+for idx, label in enumerate(plot_order):
+
+    df = series_df_dict_glacial[label]
+    scatter_df = df.drop(labels=0, axis=1)
+    sns.lineplot(
+        x=df[0].index.to_numpy(),
+        y=df[0].to_numpy(),
+        ax=axes[idx],
+        linestyle="--",
+        color="black",
+        label=0,
+    )
+    sns.scatterplot(
+        scatter_df,
+        ax=axes[idx],
+        legend=True,
+        palette="viridis",
+        markers=["o" for _ in scatter_df.columns],
+        s=50,
+        edgecolor="black",
+        linewidth=0.1,
+    )
+
+    series = geo_ms_composite_dict[label]
+    lat = np.abs(series.lat)
+    axes[idx].axvline(x=lat, color="grey", label="Local Latitude", linestyle=":")
+
+    if idx == len(series_df_dict_glacial.keys()) - 1:
+        handles, labels = axes[idx].get_legend_handles_labels()
+        fig.legend(
+            handles,
+            labels,
+            loc="center right",
+            bbox_to_anchor=[1.12, 0.5],
+            title="Offset in years",
+        )
+
+    if idx in [0, 4, 8, 12]:
+        axes[idx].set_ylabel("R$^{2}$")
+    if idx in [10, 11, 12, 13]:
+        axes[idx].set_xlabel("Absolute latitude")
+
+    axes[idx].get_legend().remove()
+    axes[idx].set_title(
+        f"{label.split('.')[0]} ", color=title_cmap[label]
+    )  # + f"{glacial_lengths[label]:.1f} kyr")
+    axes[idx].set_ylim([0, 0.9])
+
+fig.delaxes(ax[3][2])
+fig.delaxes(ax[3][3])
+plt.suptitle("R$^{2}$ vs. Latitude (Glacial)", y=1.05, fontsize=32, fontweight="bold")
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[9][39m[32m, line 46[39m
+[32m     27[39m plot_order = [
+[32m     28[39m     [33m"[39m[33mKesang.China.2012[39m[33m"[39m,
+[32m     29[39m     [33m"[39m[33mLinzhu.China.2009[39m[33m"[39m,
+[32m   (...)[39m[32m     41[39m     [33m"[39m[33mClearwater.Borneo.2016[39m[33m"[39m,
+[32m     42[39m ]
+[32m     44[39m [38;5;28;01mfor[39;00m idx, label [38;5;129;01min[39;00m [38;5;28menumerate[39m(plot_order):
+[32m---> [39m[32m46[39m     df = [43mseries_df_dict_glacial[49m[43m[[49m[43mlabel[49m[43m][49m
+[32m     47[39m     scatter_df = df.drop(labels=[32m0[39m, axis=[32m1[39m)
+[32m     48[39m     sns.lineplot(
+[32m     49[39m         x=df[[32m0[39m].index.to_numpy(),
+[32m     50[39m         y=df[[32m0[39m].to_numpy(),
+[32m   (...)[39m[32m     54[39m         label=[32m0[39m,
+[32m     55[39m     )
+
+[31mKeyError[39m: 'Sanbao.China.2016'
+

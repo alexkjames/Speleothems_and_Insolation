@@ -544,11 +544,70 @@ document.write(`
 <p>Creating glacial/interglacial series objects using MIS boundaries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the U1446 marine sediment data</span>
+
+<span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/speleothems/Sanbao.China.2016.lpd&quot;</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
+
+<span class="c1"># Loading the sanbao d18O data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;d18O&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get the first row with d18O</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
+<span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
+<span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
+<span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
+<span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
+
+<span class="n">series</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
+        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
+        <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
+        <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
+        <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">,</span>
+        <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
+        <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
+        <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Speleothem&quot;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">interp</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyrs BP&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 41.17it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating interglacial series objects</span>
 
-<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
-    <span class="s2">&quot;kyrs BP&quot;</span>
-<span class="p">)</span>  <span class="c1"># .interp()</span>
 <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
@@ -590,7 +649,7 @@ document.write(`
 <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">ts</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\delta^</span><span class="si">{18}</span><span class="s2">O$&quot;</span>
 <span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="s2">&quot;‰&quot;</span>
@@ -654,7 +713,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Period [kyr]&#39;, ylabel=&#39;PSD&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/3252004a825cec09f801d283c7cc3fa26c2b0b6ef141597420be6a8504179714.png" src="../../_images/3252004a825cec09f801d283c7cc3fa26c2b0b6ef141597420be6a8504179714.png" />
+<img alt="../../_images/5b4077ec5a83bfbead4f75fc636c8b2112693831beeb071d4a46c2b2b1581e01.png" src="../../_images/5b4077ec5a83bfbead4f75fc636c8b2112693831beeb071d4a46c2b2b1581e01.png" />
 </div>
 </div>
 </section>
@@ -673,11 +732,68 @@ document.write(`
 <p>Creating glacial/interglacial series for Buckeye Creek oxygen isotope records:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the interglacial series</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the U1446 marine sediment data</span>
 
-<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;BuckeyeCreek.WestVirginia.2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
-    <span class="s2">&quot;kyrs BP&quot;</span>
-<span class="p">)</span>  <span class="c1"># .interp()</span>
+<span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/speleothems/BuckeyeCreek.WestVirginia.2019.lpd&quot;</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
+
+<span class="c1"># Loading the sanbao d18O data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;d18O&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get the first row with d18O</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
+<span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
+<span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
+<span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
+<span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
+
+<span class="n">series</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
+        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
+        <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
+        <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
+        <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
+        <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
+        <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
+        <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Speleothem&quot;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">interp</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyrs BP&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 142.27it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the interglacial series</span>
 <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
@@ -787,7 +903,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Period [kyr]&#39;, ylabel=&#39;PSD&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/d277f91e2a449430fc274086fdaa20ddc7a29759664df2a2aa2e62f8a8f97d4b.png" src="../../_images/d277f91e2a449430fc274086fdaa20ddc7a29759664df2a2aa2e62f8a8f97d4b.png" />
+<img alt="../../_images/da63252a9da24fcb428217bb64629173969b677bb4e8d47b1611d05dd0d5b7a4.png" src="../../_images/da63252a9da24fcb428217bb64629173969b677bb4e8d47b1611d05dd0d5b7a4.png" />
 </div>
 </div>
 </section>
@@ -814,7 +930,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 18.67it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 30.83it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -975,24 +1091,22 @@ document.write(`
     <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span>
-    <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x2a3c44470&gt;,
- &lt;matplotlib.axis.XTick at 0x2a3bbbb00&gt;,
- &lt;matplotlib.axis.XTick at 0x2a3c614f0&gt;,
- &lt;matplotlib.axis.XTick at 0x2ae9332c0&gt;,
- &lt;matplotlib.axis.XTick at 0x2a3c477a0&gt;,
- &lt;matplotlib.axis.XTick at 0x2a3bde0c0&gt;,
- &lt;matplotlib.axis.XTick at 0x2a384cbc0&gt;,
- &lt;matplotlib.axis.XTick at 0x2a3c8d460&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x28548dd00&gt;,
+ &lt;matplotlib.axis.XTick at 0x28ae84710&gt;,
+ &lt;matplotlib.axis.XTick at 0x281e01f70&gt;,
+ &lt;matplotlib.axis.XTick at 0x2854de1b0&gt;,
+ &lt;matplotlib.axis.XTick at 0x28ad15700&gt;,
+ &lt;matplotlib.axis.XTick at 0x281fd6ba0&gt;,
+ &lt;matplotlib.axis.XTick at 0x28dbc7320&gt;,
+ &lt;matplotlib.axis.XTick at 0x2801a7bc0&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/9413989d7c86627805ccb03f989241c4bb35fc221a880cd550b5034296ef599c.png" src="../../_images/9413989d7c86627805ccb03f989241c4bb35fc221a880cd550b5034296ef599c.png" />
+<img alt="../../_images/969c0bc018af79c9ab6a21fb224d499a8e8e105da5aca05cb24d1815bf8e27b5.png" src="../../_images/969c0bc018af79c9ab6a21fb224d499a8e8e105da5aca05cb24d1815bf8e27b5.png" />
 </div>
 </div>
 </section>
