@@ -414,8 +414,6 @@ document.write(`
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyleoclim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyleo</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -653,7 +651,7 @@ document.write(`
 <span class="c1"># shift_array = np.arange(-8,8.1,2)</span>
 <span class="n">series_shift_dict_interglacial</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">shift_array</span><span class="p">}</span>
 
-<span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">shift_array</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">shift_array</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">orig_series</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">interglacial_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
         <span class="n">series</span> <span class="o">=</span> <span class="n">orig_series</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">label</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">label</span>
@@ -681,56 +679,6 @@ document.write(`
             <span class="n">correlated_inso</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">corr_lat</span><span class="p">,</span> <span class="n">corr_p</span><span class="p">,</span> <span class="n">corr_r</span><span class="p">])</span>
 
         <span class="n">series_shift_dict_interglacial</span><span class="p">[</span><span class="n">shift</span><span class="p">][</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">correlated_inso</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                            | 0/13 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|██████▍                                                                             | 1/13 [00:02&lt;00:26,  2.25s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|████████████▉                                                                       | 2/13 [00:04&lt;00:24,  2.27s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|███████████████████▍                                                                | 3/13 [00:06&lt;00:22,  2.28s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|█████████████████████████▊                                                          | 4/13 [00:09&lt;00:20,  2.26s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|████████████████████████████████▎                                                   | 5/13 [00:11&lt;00:17,  2.25s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|██████████████████████████████████████▊                                             | 6/13 [00:13&lt;00:15,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████████████████████████████████████████████▏                                      | 7/13 [00:15&lt;00:13,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|███████████████████████████████████████████████████▋                                | 8/13 [00:17&lt;00:11,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████████████████████████████████████████████████████████▏                         | 9/13 [00:20&lt;00:08,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████████████████████████████████████████████████████████████▊                   | 10/13 [00:22&lt;00:06,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|██████████████████████████████████████████████████████████████████████▏            | 11/13 [00:24&lt;00:04,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|████████████████████████████████████████████████████████████████████████████▌      | 12/13 [00:26&lt;00:02,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 13/13 [00:29&lt;00:00,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 13/13 [00:29&lt;00:00,  2.24s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -766,7 +714,7 @@ document.write(`
     <span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Bittoo.India.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Dongge.China.2004&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CuevadelDiamante.Peru.2013&quot;</span><span class="p">:</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Botuvera.Brazil.2005&quot;</span><span class="p">:</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Leviathan.Nevada.2017&quot;</span><span class="p">:</span> <span class="s2">&quot;Purple&quot;</span><span class="p">,</span>
@@ -790,7 +738,7 @@ document.write(`
     <span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Bittoo.India.2016&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Dongge.China.2004&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CuevadelDiamante.Peru.2013&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Botuvera.Brazil.2005&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Leviathan.Nevada.2017&quot;</span><span class="p">,</span>
@@ -858,27 +806,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">45</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">plot_order</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="s2">&quot;Kesang.China.2012&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">41</span>     <span class="s2">&quot;Clearwater.Borneo.2016&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_order</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">series_df_dict_interglacial</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">scatter_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>         <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">53</span>         <span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="p">)</span>
-
-<span class="ne">KeyError</span>: &#39;Sanbao.China.2016&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;R$^{2}$ vs. Latitude (Interglacial)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/49915c7dbe41235776adee740731a06a4779ba740e4945d94cdf8f6df8714227.png" src="../../_images/49915c7dbe41235776adee740731a06a4779ba740e4945d94cdf8f6df8714227.png" />
+<img alt="../../_images/8b827193a6b942a96d33751c2ac54913db4a5c1b6eaab2f3a6bbdf62e3265232.png" src="../../_images/8b827193a6b942a96d33751c2ac54913db4a5c1b6eaab2f3a6bbdf62e3265232.png" />
 </div>
 </div>
 </section>
