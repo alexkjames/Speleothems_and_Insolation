@@ -6,7 +6,7 @@ parts:
     chapters:
       - shortname: Load_Data
         filename: Load_Data
-        thumbnail: logo
+        thumbnail: logo.png
         tags:
           domains:
             - data wrangling
@@ -15,7 +15,7 @@ parts:
             - pyleoclim
       - shortname: Mapping_Data
         filename: Mapping_Data
-        thumbnail: lsd_map
+        thumbnail: lsd_map.png
         tags:
           domains:
             - geospatial
@@ -26,7 +26,7 @@ parts:
             - matplotlib
       - shortname: Plotting_Raw_Data
         filename: Plotting_Raw_Data
-        thumbnail: lsd_stack
+        thumbnail: lsd_stack.png
         tags:
           domains:
             - data viz
@@ -37,7 +37,7 @@ parts:
     chapters:
       - shortname: Toy_Data_Heuristic
         filename: Toy_Data_Heuristic
-        thumbnail: murmuration_helper_new
+        thumbnail: murmuration_helper_new.png
         tags:
           domains:
             - data viz
@@ -48,7 +48,7 @@ parts:
             - climlab
       - shortname: Leviathan_Cave_and_Insolation
         filename: Leviathan_Cave_and_Insolation
-        thumbnail: leviathan_lag
+        thumbnail: leviathan_lag.png
         tags:
           domains:
             - paleoclimate
@@ -62,7 +62,7 @@ parts:
     chapters:
       - shortname: Global_Coherence_Analysis
         filename: Global_Coherence_Analysis
-        thumbnail: coherence
+        thumbnail: coherence.png
         tags:
           domains:
             - data viz
@@ -85,7 +85,7 @@ parts:
             - matplotlib
       - shortname: Global_Coherence_Sensitivity
         filename: Global_Coherence_Sensitivity_and_Significance
-        thumbnail: coh_surrogate_violin
+        thumbnail: coh_surrogate_violin.png
         tags:
           domains:
             - statistics
@@ -97,7 +97,7 @@ parts:
     chapters:
       - shortname: Interglacial_Correlation
         filename: Interglacial_Correlation_Analysis
-        thumbnail: geo_ms_interglacial_correlation
+        thumbnail: geo_ms_interglacial_correlation.png
         tags:
           domains:
             - statistics
@@ -108,7 +108,7 @@ parts:
             - matplotlib
       - shortname: Glaciation_Correlation
         filename: Glaciation_Correlation_Analysis
-        thumbnail: geo_ms_glacial_correlation
+        thumbnail: geo_ms_glacial_correlation.png
         tags:
           domains:
             - statistics
