@@ -4,7 +4,7 @@ thumbnail: logo
 parts:
   - caption: Exploring the Data
     chapters:
-      - shortname: Load_Data
+      - shortname: Load Data
         filename: Load_Data
         thumbnail: logo.png
         tags:
@@ -13,7 +13,7 @@ parts:
           packages:
             - pylipd
             - pyleoclim
-      - shortname: Mapping_Data
+      - shortname: Mapping Data
         filename: Mapping_Data
         thumbnail: lsd_map.png
         tags:
@@ -24,7 +24,7 @@ parts:
             - cartopy
             - pyleoclim
             - matplotlib
-      - shortname: Plotting_Raw_Data
+      - shortname: Plotting Raw Data
         filename: Plotting_Raw_Data
         thumbnail: lsd_stack.png
         tags:
@@ -35,7 +35,7 @@ parts:
             - pyleoclim
   - caption: Heuristic Examples
     chapters:
-      - shortname: Toy_Data_Heuristic
+      - shortname: Toy Data Heuristic
         filename: Toy_Data_Heuristic
         thumbnail: murmuration_helper_new.png
         tags:
@@ -46,7 +46,7 @@ parts:
             - pyleoclim
             - matplotlib
             - climlab
-      - shortname: Leviathan_Cave_and_Insolation
+      - shortname: Leviathan Cave and Insolation
         filename: Leviathan_Cave_and_Insolation
         thumbnail: leviathan_lag.png
         tags:
@@ -60,7 +60,7 @@ parts:
             - pyleoclim
   - caption: Global Coherence Analysis
     chapters:
-      - shortname: Global_Coherence_Analysis
+      - shortname: Global Coherence Analysis
         filename: Global_Coherence_Analysis
         thumbnail: coherence.png
         tags:
@@ -72,7 +72,7 @@ parts:
             - matplotlib
             - pyleoclim
             - climlab
-      - shortname: Global_Coherence_MIS
+      - shortname: Global Coherence MIS
         filename: Global_Coherence_MIS
         thumbnail: MIS_asymmetry_fig
         tags:
@@ -83,7 +83,7 @@ parts:
             - pyleoclim
             - climlab
             - matplotlib
-      - shortname: Global_Coherence_Sensitivity
+      - shortname: Global Coherence Sensitivity
         filename: Global_Coherence_Sensitivity_and_Significance
         thumbnail: coh_surrogate_violin.png
         tags:
@@ -95,7 +95,7 @@ parts:
             - matplotlib
   - caption: Correlation Analysis
     chapters:
-      - shortname: Interglacial_Correlation
+      - shortname: Interglacial Correlation
         filename: Interglacial_Correlation_Analysis
         thumbnail: geo_ms_interglacial_correlation.png
         tags:
@@ -106,7 +106,7 @@ parts:
             - pyleoclim
             - climlab
             - matplotlib
-      - shortname: Glaciation_Correlation
+      - shortname: Glaciation Correlation
         filename: Glaciation_Correlation_Analysis
         thumbnail: geo_ms_glacial_correlation.png
         tags:
