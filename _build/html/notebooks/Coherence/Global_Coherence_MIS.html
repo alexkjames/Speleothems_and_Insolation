@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Calculating Global Coherence as a function of Glacial/Interglacial cycles &#8212; Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing</title>
+    <title>Calculating Global Coherence as a function of Glacial/Interglacial cycles &#8212; Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="Calculating Global Coherence" href="Global_Coherence_Analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -146,25 +153,29 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing - Home"/>
-    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing
+                    Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing
                 </a>
             </li>
         </ul>
@@ -187,8 +198,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Correlation Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Correlation/Interglacial_Correlation_Analysis.html">Creating Murmuration Plots for the Interglacial Segments of our Speleothem Oxygen Isotope Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Correlation/Glacial_Correlation_Analysis.html">Creating Murmuration Plots for the Glacial Segments of our Speleothem Oxygen Isotope Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Correlation/Interglacial_Correlation_Analysis.html">Creating Murmuration Plots for Interglacial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Correlation/Glacial_Correlation_Analysis.html">Creating Murmuration Plots for Glacial Data</a></li>
 </ul>
 
     </div>
@@ -243,7 +254,7 @@
       
       
       
-      <li><a href="https://github.com/alexkjames/Speleothems_and_Insolation" target="_blank"
+      <li><a href="https://github.com/LinkedEarth/Speleothems_and_Insolation" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -260,7 +271,7 @@
       
       
       
-      <li><a href="https://github.com/alexkjames/Speleothems_and_Insolation/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Coherence/Global_Coherence_MIS.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LinkedEarth/Speleothems_and_Insolation/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Coherence/Global_Coherence_MIS.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -343,16 +354,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -407,23 +426,16 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing the necessary libraries</span>
 
-<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
-<span class="kn">import</span> <span class="nn">pyleoclim</span> <span class="k">as</span> <span class="nn">pyleo</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyleoclim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyleo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">climlab.solar.orbital</span> <span class="kn">import</span> <span class="n">OrbitalTable</span>
-<span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
-<span class="kn">from</span> <span class="nn">pylipd.lipd</span> <span class="kn">import</span> <span class="n">LiPD</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenization took: 1.18 ms
-Type conversion took: 0.66 ms
-Parser memory cleanup took: 0.00 ms
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.orbital</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrbitalTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.insolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">daily_insolation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylipd.lipd</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiPD</span>
 </pre></div>
 </div>
 </div>
@@ -432,13 +444,13 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing the data</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../data/geo_ms_composite_dict.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../../data/geo_ms_composite_dict.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">geo_ms_composite_dict</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../data/cmap_grouped.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../../data/cmap_grouped.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">cmap</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../data/correlated_latitude.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../../data/correlated_latitude.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">correlated_latitude</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -455,14 +467,22 @@ Parser memory cleanup took: 0.00 ms
 <span class="c1"># subset of orbital parameters for specified time</span>
 <span class="n">orb</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
 
-<span class="c1">#Day numbers from June 1st to August 31st</span>
-<span class="n">jja_days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">152</span><span class="p">,</span><span class="mi">243</span><span class="p">)</span>
+<span class="c1"># Day numbers from June 1st to August 31st</span>
+<span class="n">jja_days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">152</span><span class="p">,</span> <span class="mi">243</span><span class="p">)</span>
 
 <span class="n">lat</span> <span class="o">=</span> <span class="mi">30</span>
 
 <span class="n">days</span> <span class="o">=</span> <span class="n">jja_days</span>
-<span class="n">inso</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">days</span><span class="p">,</span> <span class="n">orb</span><span class="o">=</span><span class="n">orb</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">)</span>
-<span class="n">inso_series</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="o">-</span><span class="n">years</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="n">inso</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">time_name</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="s1">&#39;Kyr BP&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;JJA Insolation </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s1"> N&#39;</span><span class="p">,</span><span class="n">value_unit</span><span class="o">=</span><span class="s1">&#39;W/m^2&#39;</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">inso</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">days</span><span class="p">,</span> <span class="n">orb</span><span class="o">=</span><span class="n">orb</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
+<span class="n">inso_series</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">years</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="n">inso</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">time_name</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">time_unit</span><span class="o">=</span><span class="s2">&quot;Kyr BP&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;JJA Insolation </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">,</span>
+    <span class="n">value_unit</span><span class="o">=</span><span class="s2">&quot;W/m^2&quot;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -472,14 +492,49 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Building the MIS boundaries</span>
 
-<span class="n">MIS_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;https://lorraine-lisiecki.com/LR04_MISboundaries.txt&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Boundary&#39;</span><span class="p">)</span> 
+<span class="n">MIS_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span>
+    <span class="s2">&quot;https://lorraine-lisiecki.com/LR04_MISboundaries.txt&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Boundary&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">interglacial_to_glacial</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1/2&#39;</span><span class="p">,</span><span class="s1">&#39;5/6&#39;</span><span class="p">,</span><span class="s1">&#39;7/8&#39;</span><span class="p">,</span><span class="s1">&#39;9/10&#39;</span><span class="p">,</span><span class="s1">&#39;11/12&#39;</span><span class="p">,</span><span class="s1">&#39;13/14&#39;</span><span class="p">,</span><span class="s1">&#39;15/16&#39;</span><span class="p">,</span><span class="s1">&#39;17/18&#39;</span><span class="p">,</span><span class="s1">&#39;19/20&#39;</span><span class="p">]</span>
-<span class="n">glacial_to_interglacial</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;4/5&#39;</span><span class="p">,</span><span class="s1">&#39;6/7&#39;</span><span class="p">,</span><span class="s1">&#39;8/9&#39;</span><span class="p">,</span><span class="s1">&#39;10/11&#39;</span><span class="p">,</span><span class="s1">&#39;12/13&#39;</span><span class="p">,</span><span class="s1">&#39;14/15&#39;</span><span class="p">,</span><span class="s1">&#39;16/17&#39;</span><span class="p">,</span><span class="s1">&#39;18/19&#39;</span><span class="p">]</span>
+<span class="n">interglacial_to_glacial</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;1/2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5/6&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7/8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9/10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;11/12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;13/14&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;15/16&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;17/18&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;19/20&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">glacial_to_interglacial</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;4/5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6/7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8/9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10/11&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;12/13&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;14/15&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;16/17&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;18/19&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
-<span class="n">glacial_timing</span> <span class="o">=</span> <span class="p">[(</span><span class="n">MIS_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">interglacial_to_glacial</span><span class="p">[</span><span class="n">idx</span><span class="p">]][</span><span class="s1">&#39;Age(ka)&#39;</span><span class="p">],</span><span class="n">MIS_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">glacial_to_interglacial</span><span class="p">[</span><span class="n">idx</span><span class="p">]][</span><span class="s1">&#39;Age(ka)&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glacial_to_interglacial</span><span class="p">))]</span>
-<span class="n">interglacial_timing</span> <span class="o">=</span> <span class="p">[(</span><span class="n">glacial_timing</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">glacial_timing</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">glacial_to_interglacial</span><span class="p">))]</span>
-<span class="n">interglacial_timing</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="n">glacial_timing</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">glacial_timing</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="n">MIS_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">interglacial_to_glacial</span><span class="p">[</span><span class="n">idx</span><span class="p">]][</span><span class="s2">&quot;Age(ka)&quot;</span><span class="p">],</span>
+        <span class="n">MIS_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">glacial_to_interglacial</span><span class="p">[</span><span class="n">idx</span><span class="p">]][</span><span class="s2">&quot;Age(ka)&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glacial_to_interglacial</span><span class="p">))</span>
+<span class="p">]</span>
+<span class="n">interglacial_timing</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">glacial_timing</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">glacial_timing</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">glacial_to_interglacial</span><span class="p">))</span>
+<span class="p">]</span>
+<span class="n">interglacial_timing</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">glacial_timing</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -491,7 +546,9 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating interglacial series objects</span>
 
-<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s1">&#39;Sanbao.China.2016&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s1">&#39;kyrs BP&#39;</span><span class="p">)</span><span class="c1">#.interp()</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
+    <span class="s2">&quot;kyrs BP&quot;</span>
+<span class="p">)</span>  <span class="c1"># .interp()</span>
 <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
@@ -529,14 +586,14 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating coherence and plotting the data</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">ts</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s1">&#39;Sanbao.China.2016&#39;</span><span class="p">]</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">]</span>
 
-<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;‰&#39;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\delta^</span><span class="si">{18}</span><span class="s2">O$&quot;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="s2">&quot;‰&quot;</span>
 
 <span class="n">ts_plot</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">interp</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cutoff_scale</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
@@ -546,44 +603,50 @@ Parser memory cleanup took: 0.00 ms
 <span class="n">glacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">interglacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span><span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span> <span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">glacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">glacial_start</span><span class="p">)])</span>
-<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span><span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
+        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">glacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">glacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
+<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span> <span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">interglacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">interglacial_start</span><span class="p">)])</span>
+        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">interglacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">interglacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
 
-<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">glacial_interval</span> <span class="ow">in</span> <span class="n">glacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">interglacial_interval</span> <span class="ow">in</span> <span class="n">interglacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">ax_twin</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax_twin</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
 
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="n">glacial_coh_real</span> <span class="o">=</span> <span class="n">glacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">glacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">interglacial_coh_real</span> <span class="o">=</span> <span class="n">interglacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">interglacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -591,7 +654,7 @@ Parser memory cleanup took: 0.00 ms
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Period [kyr]&#39;, ylabel=&#39;PSD&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/b580c407be212e6bb9a11010b9b6ae3bfb26208d152421cab4ac6e4d132e802b.png" src="../../_images/b580c407be212e6bb9a11010b9b6ae3bfb26208d152421cab4ac6e4d132e802b.png" />
+<img alt="../../_images/62c903b2dda441f52b15c557d0573ff2cacae27ff6d04f2f46fece42932daf93.png" src="../../_images/62c903b2dda441f52b15c557d0573ff2cacae27ff6d04f2f46fece42932daf93.png" />
 </div>
 </div>
 </section>
@@ -599,9 +662,9 @@ Parser memory cleanup took: 0.00 ms
 <h2>Buckeye Creek<a class="headerlink" href="#buckeye-creek" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading smoothed plotting dict, necessary here </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading smoothed plotting dict, necessary here</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../data/smooth_plotting_series_dict.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../../data/smooth_plotting_series_dict.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">smoothed_plotting_series</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -612,7 +675,9 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the interglacial series</span>
 
-<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s1">&#39;BuckeyeCreek.WestVirginia.2019&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s1">&#39;kyrs BP&#39;</span><span class="p">)</span><span class="c1">#.interp()</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;BuckeyeCreek.WestVirginia.2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
+    <span class="s2">&quot;kyrs BP&quot;</span>
+<span class="p">)</span>  <span class="c1"># .interp()</span>
 <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
@@ -650,15 +715,19 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating coherence and plotting the data</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">ts</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s1">&#39;BuckeyeCreek.WestVirginia.2019&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s1">&#39;kyrs BP&#39;</span><span class="p">)</span>
-<span class="n">ts_plot</span> <span class="o">=</span> <span class="n">smoothed_plotting_series</span><span class="p">[</span><span class="s1">&#39;BuckeyeCreek.WestVirginia.2019&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s1">&#39;kyrs BP&#39;</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;BuckeyeCreek.WestVirginia.2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
+    <span class="s2">&quot;kyrs BP&quot;</span>
+<span class="p">)</span>
+<span class="n">ts_plot</span> <span class="o">=</span> <span class="n">smoothed_plotting_series</span><span class="p">[</span><span class="s2">&quot;BuckeyeCreek.WestVirginia.2019&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span>
+    <span class="s2">&quot;kyrs BP&quot;</span>
+<span class="p">)</span>
 
-<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;‰&#39;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\delta^</span><span class="si">{18}</span><span class="s2">O$&quot;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="s2">&quot;‰&quot;</span>
 
 <span class="n">max_age</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
 <span class="n">min_age</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
@@ -666,45 +735,51 @@ Parser memory cleanup took: 0.00 ms
 <span class="n">glacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">interglacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span><span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span> <span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">glacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">glacial_start</span><span class="p">)])</span>
-<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span><span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
+        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">glacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">glacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
+<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span> <span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">interglacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">interglacial_start</span><span class="p">)])</span>
+        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">interglacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">interglacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
 
-<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age [kyr BP]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Age [kyr BP]&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">glacial_interval</span> <span class="ow">in</span> <span class="n">glacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">interglacial_interval</span> <span class="ow">in</span> <span class="n">interglacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">ax_twin</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax_twin</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
 
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="n">glacial_coh_real</span> <span class="o">=</span> <span class="n">glacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">glacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">interglacial_coh_real</span> <span class="o">=</span> <span class="n">interglacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">interglacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">[</span><span class="n">ts</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -712,7 +787,7 @@ Parser memory cleanup took: 0.00 ms
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Period [kyr]&#39;, ylabel=&#39;PSD&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/80226eb78cc8e0e28f4f9171dbc7967133e7cd34773908af859070ed765a12f3.png" src="../../_images/80226eb78cc8e0e28f4f9171dbc7967133e7cd34773908af859070ed765a12f3.png" />
+<img alt="../../_images/4d10b8bf96194cfbd0639feac5e0e1ee074984e336ecfb796ada9e177b484a03.png" src="../../_images/4d10b8bf96194cfbd0639feac5e0e1ee074984e336ecfb796ada9e177b484a03.png" />
 </div>
 </div>
 </section>
@@ -723,11 +798,11 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the U1446 marine sediment data</span>
 
-<span class="n">lipd_path</span> <span class="o">=</span> <span class="s1">&#39;../../data/marine_sediments/U1446.IndianOcean.2021.lpd&#39;</span>
+<span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/marine_sediments/U1446.IndianOcean.2021.lpd&quot;</span>
 
 <span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -736,10 +811,10 @@ Parser memory cleanup took: 0.00 ms
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                    | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 26.58it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 35.80it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
@@ -757,29 +832,30 @@ Parser memory cleanup took: 0.00 ms
 
 <span class="n">ms_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;time_values&#39;</span><span class="p">]</span>
-    <span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;time_variableName&#39;</span><span class="p">]</span>
-    <span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;time_units&#39;</span><span class="p">]</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;paleoData_values&#39;</span><span class="p">]</span>
-    <span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;paleoData_variableName&#39;</span><span class="p">]</span>
-    <span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;paleoData_units&#39;</span><span class="p">]</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;geo_meanLat&#39;</span><span class="p">]</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;geo_meanLon&#39;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">value_name</span> <span class="o">==</span> <span class="s1">&#39;d18O SW TEX86&#39;</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
+    <span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
+    <span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
+    <span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
+    <span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">value_name</span> <span class="o">==</span> <span class="s2">&quot;d18O SW TEX86&quot;</span><span class="p">:</span>
         <span class="n">series</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
-            <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> 
-            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> 
-            <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span> 
-            <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span> 
-            <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span> 
+            <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
+            <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
+            <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
             <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
             <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
             <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
-            <span class="n">archiveType</span><span class="o">=</span><span class="s1">&#39;Marine Sediment&#39;</span><span class="p">,</span>
-            <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">interp</span><span class="p">()</span>
-            
-        <span class="n">sw_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">slice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">])</span>
+            <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Marine Sediment&quot;</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">interp</span><span class="p">()</span>
+
+        <span class="n">sw_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">slice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
         <span class="k">break</span>
 </pre></div>
 </div>
@@ -828,15 +904,15 @@ Parser memory cleanup took: 0.00 ms
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating coherence and plotting the data</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 
 <span class="n">ts</span> <span class="o">=</span> <span class="n">series</span>
 <span class="n">ts_plot</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">cutoff_scale</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;‰&#39;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\delta^</span><span class="si">{18}</span><span class="s2">O$&quot;</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">value_unit</span> <span class="o">=</span> <span class="s2">&quot;‰&quot;</span>
 
 <span class="n">max_age</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
 <span class="n">min_age</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
@@ -844,53 +920,79 @@ Parser memory cleanup took: 0.00 ms
 <span class="n">glacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">interglacial_intervals</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span><span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">glacial_end</span><span class="p">,</span> <span class="n">glacial_start</span> <span class="ow">in</span> <span class="n">glacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">glacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">glacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">glacial_start</span><span class="p">)])</span>
-<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span><span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
+        <span class="n">glacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">glacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">glacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
+<span class="k">for</span> <span class="n">interglacial_end</span><span class="p">,</span> <span class="n">interglacial_start</span> <span class="ow">in</span> <span class="n">interglacial_timing</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_end</span> <span class="o">&lt;</span> <span class="n">max_age</span> <span class="ow">or</span> <span class="n">min_age</span> <span class="o">&lt;</span> <span class="n">interglacial_start</span> <span class="o">&lt;</span> <span class="n">max_age</span><span class="p">:</span>
-        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span><span class="n">interglacial_end</span><span class="p">),</span><span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span><span class="n">interglacial_start</span><span class="p">)])</span>
+        <span class="n">interglacial_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">min_age</span><span class="p">,</span> <span class="n">interglacial_end</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_age</span><span class="p">,</span> <span class="n">interglacial_start</span><span class="p">)]</span>
+        <span class="p">)</span>
 
-<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ts_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">glacial_interval</span> <span class="ow">in</span> <span class="n">glacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">glacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">glacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">interglacial_interval</span> <span class="ow">in</span> <span class="n">interglacial_intervals</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">interglacial_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">ax_twin</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax_twin</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">inso_series</span><span class="o">.</span><span class="n">slice</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_twin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
 
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="n">glacial_coh_real</span> <span class="o">=</span> <span class="n">glacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">glacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dotted&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dotted&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">interglacial_coh_real</span> <span class="o">=</span> <span class="n">interglacial_series</span><span class="o">.</span><span class="n">global_coherence</span><span class="p">(</span><span class="n">inso_series</span><span class="p">)</span>
 <span class="n">interglacial_coh_real</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span><span class="s1">&#39;dashed&#39;</span><span class="p">},</span>
-    <span class="n">coh_line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">spec1_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">spec2_plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;linestyle&quot;</span><span class="p">:</span> <span class="s2">&quot;dashed&quot;</span><span class="p">},</span>
+    <span class="n">coh_line_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;U1446&#39;</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">500</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">],);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="mf">0.4</span><span class="p">,</span>
+    <span class="s2">&quot;U1446&quot;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/91a0a60435e0ce2668b8d8f2bd25002587186963373688de2ea6936ced868809.png" src="../../_images/91a0a60435e0ce2668b8d8f2bd25002587186963373688de2ea6936ced868809.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x339729790&gt;,
+ &lt;matplotlib.axis.XTick at 0x33e0cc410&gt;,
+ &lt;matplotlib.axis.XTick at 0x3397e0590&gt;,
+ &lt;matplotlib.axis.XTick at 0x3397e1a50&gt;,
+ &lt;matplotlib.axis.XTick at 0x3397e3890&gt;,
+ &lt;matplotlib.axis.XTick at 0x3397e5e90&gt;,
+ &lt;matplotlib.axis.XTick at 0x339773dd0&gt;,
+ &lt;matplotlib.axis.XTick at 0x339a55810&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/a063198cd04da0fc8323d7ecbf3c29b5b96fb890975fd03e53d281aee31bb1b0.png" src="../../_images/a063198cd04da0fc8323d7ecbf3c29b5b96fb890975fd03e53d281aee31bb1b0.png" />
 </div>
 </div>
 </section>
@@ -951,8 +1053,7 @@ Parser memory cleanup took: 0.00 ms
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1012,8 +1113,8 @@ By Alexander James
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

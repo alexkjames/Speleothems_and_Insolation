@@ -1,4 +1,4 @@
-# Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing
+# Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing
 
 This repository contains the notebooks used to generate figures and conduct analysis from the paper *Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing*.
 

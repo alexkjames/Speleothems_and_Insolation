@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Global Speleothem Analysis Reveals State-Dependent Rainbelt Response to Orbital Forcing
+title: Global Speleothem Analysis Reveals State-Dependent Hydrological Response to Orbital Forcing
 author: Alexander James
 logo: logo.png
 copyright: "2024"
@@ -15,7 +15,7 @@ latex:
     targetname: book.tex
 
 repository:
-  url: https://github.com/alexkjames/Speleothems_and_Insolation
+  url: https://github.com/LinkedEarth/Speleothems_and_Insolation
   branch: main
 
 html:
