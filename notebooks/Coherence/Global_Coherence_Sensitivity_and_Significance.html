@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -414,6 +414,8 @@ document.write(`
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyleoclim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyleo</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -515,129 +517,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Loading the data:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/speleothems/Sanbao.China.2016.lpd&quot;</span>
-
-<span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
-
-<span class="c1"># Loading the sanbao d18O data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
-<span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;d18O&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get the first row with d18O</span>
-
-<span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
-<span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
-<span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
-<span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
-<span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
-<span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
-
-<span class="n">sanbao</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
-        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
-        <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
-        <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
-        <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
-        <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
-        <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
-        <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sanbao&quot;</span><span class="p">,</span>
-        <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Speleothem&quot;</span><span class="p">,</span>
-        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">interp</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyrs BP&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 60.44it/s]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the U1446 marine sediment data</span>
-
-<span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/speleothems/BuckeyeCreek.WestVirginia.2019.lpd&quot;</span>
-
-<span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
-
-<span class="c1"># Loading the sanbao d18O data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span>
-<span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;d18O&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get the first row with d18O</span>
-
-<span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
-<span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
-<span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
-<span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
-<span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
-<span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
-
-<span class="n">buckeye</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
-        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
-        <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
-        <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
-        <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
-        <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Buckeye Creek&quot;</span><span class="p">,</span>
-        <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
-        <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
-        <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Speleothem&quot;</span><span class="p">,</span>
-        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">interp</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyrs BP&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 135.89it/s]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Loading U1446 data as it isn’t stored as part of our speleothem database:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the marine sediment data</span>
@@ -684,76 +564,16 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                    | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 31.11it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 35.22it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading the marine sediment data</span>
-
-<span class="n">lipd_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/marine_sediments/U1446.IndianOcean.2021.lpd&quot;</span>
-
-<span class="n">L</span> <span class="o">=</span> <span class="n">LiPD</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">L</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lipd_path</span><span class="p">)</span>
-
-<span class="n">ms_dict</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">L</span><span class="o">.</span><span class="n">get_timeseries_essentials</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_values&quot;</span><span class="p">]</span>
-    <span class="n">time_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_variableName&quot;</span><span class="p">]</span>
-    <span class="n">time_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;time_units&quot;</span><span class="p">]</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_values&quot;</span><span class="p">]</span>
-    <span class="n">value_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_variableName&quot;</span><span class="p">]</span>
-    <span class="n">value_unit</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;paleoData_units&quot;</span><span class="p">]</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLat&quot;</span><span class="p">]</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geo_meanLon&quot;</span><span class="p">]</span>
-    <span class="n">series</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
-        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
-        <span class="n">time_name</span><span class="o">=</span><span class="n">time_name</span><span class="p">,</span>
-        <span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">,</span>
-        <span class="n">value_name</span><span class="o">=</span><span class="n">value_name</span><span class="p">,</span>
-        <span class="n">value_unit</span><span class="o">=</span><span class="n">value_unit</span><span class="p">,</span>
-        <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
-        <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
-        <span class="n">archiveType</span><span class="o">=</span><span class="s2">&quot;Marine Sediment&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U1446&quot;</span><span class="p">,</span>
-        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">interp</span><span class="p">()</span>
-
-    <span class="n">ms_dict</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">value_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">slice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
-
-<span class="n">u1446</span> <span class="o">=</span> <span class="n">ms_dict</span><span class="p">[</span><span class="s2">&quot;d18O SW TEX86&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading 1 LiPD files
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                             | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 33.05it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded..
 </pre></div>
 </div>
 </div>
@@ -763,18 +583,26 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a multiple series with the three series</span>
 
-<span class="n">ms</span> <span class="o">=</span> <span class="n">pyleo</span><span class="o">.</span><span class="n">MultipleGeoSeries</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="n">sanbao</span><span class="p">,</span>
-        <span class="n">u1446</span><span class="p">,</span>
-        <span class="n">buckeye</span><span class="p">,</span>
-    <span class="p">]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyr BP&quot;</span><span class="p">)</span>
+<span class="n">ms</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pyleo</span><span class="o">.</span><span class="n">MultipleGeoSeries</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">],</span>
+            <span class="n">u1446</span><span class="p">,</span>
+            <span class="n">geo_ms_composite_dict</span><span class="p">[</span><span class="s2">&quot;BuckeyeCreek.WestVirginia.2019&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;kyr BP&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># Rough interpolation to speed up calculations</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Creating integrated summer insolation curves at 30N:</p>
+<div class="alert alert-block alert-warning">
+    <b>Warning:</b> Note that we have interpolated the data to a non-optimal resolution to minimize the runtime of this
+    notebook. For best results that are maximally consistent with the paper, remove the rough interpolation step in the
+    cell above.
+</div><p>Creating integrated summer insolation curves at 30N:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating insolation objects with the most correlated latitude of insolation</span>
@@ -850,7 +678,7 @@ document.write(`
 <span class="n">interglacial_coh_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">surrogate_coh</span> <span class="o">=</span> <span class="p">{</span><span class="n">series</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">}</span>
 
-<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">):</span>
     <span class="c1"># create glacial and interglacial series</span>
     <span class="n">series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">convert_time_unit</span><span class="p">(</span><span class="s2">&quot;Kyr BP&quot;</span><span class="p">)</span>
     <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
@@ -909,6 +737,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                    | 0/3 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|█████████████████████████████████████████▎                                                                                  | 1/3 [00:23&lt;00:47, 23.72s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████████████████████████████████████████████████████████████████████████████████▋                                         | 2/3 [00:47&lt;00:24, 24.01s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [01:11&lt;00:00, 24.02s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [01:11&lt;00:00, 23.99s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -923,12 +771,34 @@ document.write(`
 <p>Calculating significance:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating surrogate significance</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculating surrogate significance (this can take a while, around 20 minutes)</span>
 
 <span class="n">surr_coh_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">:</span>
-    <span class="n">surr_coh_dict</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_signif</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">inso_series</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">):</span>
+    <span class="n">surr_coh_dict</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_signif</span><span class="p">(</span>
+        <span class="n">series</span><span class="o">.</span><span class="n">interp</span><span class="p">(),</span> <span class="n">inso_series</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1000</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                    | 0/3 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|█████████████████████████████████████████▎                                                                                  | 1/3 [01:12&lt;02:25, 72.74s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████████████████████████████████████████████████████████████████████████████████▋                                         | 2/3 [02:25&lt;01:12, 72.65s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [03:38&lt;00:00, 72.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [03:38&lt;00:00, 72.90s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -953,7 +823,7 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
     <span class="n">surrogate_df</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">whis</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
 <span class="p">)</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">series_list</span><span class="p">))):</span>
     <span class="n">surr_coh</span> <span class="o">=</span> <span class="n">surr_coh_dict</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">surr_coh</span><span class="p">,</span> <span class="mi">95</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
@@ -985,10 +855,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3it [00:00, 1258.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Maximum Coherence (10-30 kyr band)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/2daaeab73d179f9fa3ecdce584f2ee7e620943549592a122cb4639d6dfd41ade.png" src="../../_images/2daaeab73d179f9fa3ecdce584f2ee7e620943549592a122cb4639d6dfd41ade.png" />
+<img alt="../../_images/8940261afc6eb0336764c38ea7b09e22ecd27ff08e2d0ec8680ce1be5c84b0c0.png" src="../../_images/8940261afc6eb0336764c38ea7b09e22ecd27ff08e2d0ec8680ce1be5c84b0c0.png" />
 </div>
 </div>
 </section>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -411,6 +411,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyleoclim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyleo</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -648,7 +650,7 @@ document.write(`
 <span class="c1"># shift_array = np.arange(-8,8.1,2)</span>
 <span class="n">series_shift_dict_glacial</span> <span class="o">=</span> <span class="p">{</span><span class="n">shift</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">shift_array</span><span class="p">}</span>
 
-<span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">shift_array</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">shift_array</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">orig_series</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">glacial_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
         <span class="n">series</span> <span class="o">=</span> <span class="n">orig_series</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">label</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">label</span>
@@ -676,6 +678,56 @@ document.write(`
             <span class="n">correlated_inso</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">corr_lat</span><span class="p">,</span> <span class="n">corr_p</span><span class="p">,</span> <span class="n">corr_r</span><span class="p">])</span>
 
         <span class="n">series_shift_dict_glacial</span><span class="p">[</span><span class="n">shift</span><span class="p">][</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">correlated_inso</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                   | 0/13 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|█████████▍                                                                                                                 | 1/13 [00:02&lt;00:35,  2.99s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|██████████████████▉                                                                                                        | 2/13 [00:05&lt;00:32,  2.95s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|████████████████████████████▍                                                                                              | 3/13 [00:08&lt;00:29,  2.95s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|█████████████████████████████████████▊                                                                                     | 4/13 [00:11&lt;00:26,  2.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███████████████████████████████████████████████▎                                                                           | 5/13 [00:14&lt;00:23,  2.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████████████████████████████████████████████████████████▊                                                                  | 6/13 [00:17&lt;00:20,  2.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|██████████████████████████████████████████████████████████████████▏                                                        | 7/13 [00:20&lt;00:17,  2.96s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|███████████████████████████████████████████████████████████████████████████▋                                               | 8/13 [00:23&lt;00:14,  2.96s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|█████████████████████████████████████████████████████████████████████████████████████▏                                     | 9/13 [00:26&lt;00:11,  2.96s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|█████████████████████████████████████████████████████████████████████████████████████████████▊                            | 10/13 [00:29&lt;00:08,  2.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|███████████████████████████████████████████████████████████████████████████████████████████████████████▏                  | 11/13 [00:32&lt;00:05,  2.96s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌         | 12/13 [00:35&lt;00:02,  2.98s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13/13 [00:38&lt;00:00,  2.99s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13/13 [00:38&lt;00:00,  2.97s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -711,7 +763,7 @@ document.write(`
     <span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Bittoo.India.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Dongge.China.2004&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">:</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CuevadelDiamante.Peru.2013&quot;</span><span class="p">:</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Botuvera.Brazil.2005&quot;</span><span class="p">:</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Leviathan.Nevada.2017&quot;</span><span class="p">:</span> <span class="s2">&quot;Purple&quot;</span><span class="p">,</span>
@@ -735,7 +787,7 @@ document.write(`
     <span class="s2">&quot;Linzhu.China.2009&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Bittoo.India.2016&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Dongge.China.2004&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SanbaoHulu.China.2016&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sanbao.China.2016&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CuevadelDiamante.Peru.2013&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Botuvera.Brazil.2005&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Leviathan.Nevada.2017&quot;</span><span class="p">,</span>
@@ -805,7 +857,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;R$^{2}$ vs. Latitude (Glacial)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/7122796220230165c9f0147ddb479ce7222ef747910266ca91a86f430c586c96.png" src="../../_images/7122796220230165c9f0147ddb479ce7222ef747910266ca91a86f430c586c96.png" />
+<img alt="../../_images/82f0376bb31e155c59bc43c64066a5ca562b31d644420fa56dc735f16f5474e0.png" src="../../_images/82f0376bb31e155c59bc43c64066a5ca562b31d644420fa56dc735f16f5474e0.png" />
 </div>
 </div>
 </section>
